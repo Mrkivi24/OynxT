@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Claim Token</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    .form-container {
+      max-width: 400px;
+      margin: 80px auto;
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 10px;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .form-container button {
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #4e54c8, #8f94fb);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .form-container button:hover {
+      background: linear-gradient(135deg, #5a5fc9, #9ba0fc);
+    }
+
+    .success-message {
+      margin-top: 20px;
+      color: #4caf50;
+      font-size: 18px;
+      display: none;
+      animation: fadeIn 0.6s ease-in-out forwards;
+    }
+
+    .checkmark {
+      display: none;
+      width: 60px;
+      margin: 20px auto 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Iegūt OYNX Token</h1>
+    <nav>
+      <a href="/">Sākums</a>
+      <a href="/about" class="active">Par</a>
+      <a href="/claim">Pieprasīt</a>
+      <a href="/security">Drošība</a>
+      <a href="/technologie">Tehnoloģija</a>
+    </nav>
+  </header>
+  <div class="form-container">
+    <h2>Claim Your Token</h2>
+    <form id="claimForm" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="text" name="wallet" placeholder="Phantom Wallet Address" required>
+      <button type="submit">Submit</button>
+    </form>
+    <i>Lūdzu ieslēdziet devnet opciju, lai  OYNX tokens strādātu. Lūdzu uzgaidāt kamēr jums nosūtīs (nenotiks ātri). <br>
+      <a style="color: #f585ff;" href="https://phantom.com/"> mēs ieskam!</a>
+    </i>
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Yes_Check_Circle.svg/1024px-Yes_Check_Circle.svg.png" alt="Success" class="checkmark" id="checkmark">
+    <div class="success-message" id="successMessage">Request received! Admin will verify your wallet.</div>
+  </div>
+
+  <script>
+    document.getElementById("claimForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent default submission
+
+      // Hide form elements
+      const form = document.getElementById("claimForm");
+      const button = form.querySelector("button");
+      button.disabled = true;
+
+      // Show checkmark and message
+      document.getElementById("checkmark").style.display = "block";
+      document.getElementById("successMessage").style.display = "block";
+    });
+  </script>
+</body>
+</html>

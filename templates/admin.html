@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Admin Dashboard</h1>
+  </header>
+  <main>
+    <h2>Iesūtītie:</h2>
+    <table>
+      <tr>
+        <th>vārds</th>
+        <th>Adrese</th>
+        <th>Laiks</th>
+      </tr>
+      {% for req in requests %}
+      <tr>
+        <td>{{ req.name }}</td>
+        <td>{{ req.wallet }}</td>
+        <td>{{ req.timestamp }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </main>
+</body>
+</html>
