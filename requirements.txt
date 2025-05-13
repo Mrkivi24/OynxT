@@ -1,4 +1,1 @@
-flask
-sqlite3
-datetime
-os
+Flask==2.3.3
